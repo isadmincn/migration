@@ -1,0 +1,12 @@
+<?php
+$namespaceDefinition
+
+use $useClassName;
+
+class $className extends $baseClassName
+{
+    public function run()
+    {
+
+    }
+}

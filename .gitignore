@@ -1,0 +1,9 @@
+# Created by .ignore support plugin (hsz.mobi)
+/.idea
+/vendor
+/tests/.env
+/tests/log
+/.php_cs.cache
+/.phinx
+/yarn-error.log
+/.phpunit.result.cache

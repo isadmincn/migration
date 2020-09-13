@@ -1,0 +1,39 @@
+{
+    "name": "isadmin/migration",
+    "type": "library",
+    "description": "Another migration used for thinkphp v6",
+    "license": "MIT License",
+    "authors": [
+        {
+            "name": "isadmin",
+            "email": "dev@isadmin.cn"
+        }
+    ],
+    "require": {
+        "php": ">=7.2",
+        "robmorgan/phinx": "~0.12.0",
+        "topthink/framework": "^6.0.2",
+        "topthink/think-orm": "^2.0.30"
+    },
+    "autoload": {
+        "psr-4": {
+            "isadmin\\migration\\": "src"
+        },
+        "files": [
+            "src/helper.php"
+        ]
+    },
+    "extra": {
+        "think": {
+            "services": [
+                "isadmin\\migration\\Service"
+            ],
+            "config": {
+                "phinx": "config/migration.php"
+            }
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
