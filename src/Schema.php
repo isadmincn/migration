@@ -90,7 +90,7 @@ class Schema
 
         if (empty($schema->blueprint->getColumns()) && empty($schema->blueprint->getIndexs())) {
             if ($name === 'create') {
-                throw new RuntimeException('blueprint is empty by create: ' . $column->getName());
+                throw new RuntimeException('blueprint is empty by create');
             }
         }
 

@@ -29,7 +29,7 @@
                 "isadmin\\migration\\Service"
             ],
             "config": {
-                "phinx": "config/migration.php"
+                "migration": "config/migration.php"
             }
         }
     },
