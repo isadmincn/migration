@@ -2,7 +2,7 @@
     "name": "isadmin/migration",
     "type": "library",
     "description": "Another migration used for thinkphp v6",
-    "license": "MIT License",
+    "license": "MIT",
     "authors": [
         {
             "name": "isadmin",
