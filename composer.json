@@ -12,8 +12,7 @@
     "require": {
         "php": ">=7.2",
         "robmorgan/phinx": "~0.12.0",
-        "topthink/framework": "^6.0.2",
-        "topthink/think-orm": "^2.0.30"
+        "topthink/framework": "^6.0"
     },
     "autoload": {
         "psr-4": {

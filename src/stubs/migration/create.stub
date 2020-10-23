@@ -1,0 +1,38 @@
+<?php
+declare(strict_types=1);
+$namespaceDefinition
+use $useClassName;
+use Phinx\Db\Adapter\MysqlAdapter;
+
+final class $className extends $baseClassName
+{
+    /**
+     * 执行migrate:run命令时，会调用该方法
+     */
+    public function up()
+    {
+        if ($this->table('$tableName')->exists()) {
+            return;
+        }
+
+        // 初始化数据表设置
+        $this->initTable('$tableName', [
+            'comment' => '$tableComment'
+        ]);
+
+        // 添加字段，创建表
+        $this->addPrimaryIdColumn('id')
+             ->addPublicField($withoutState)
+             ->create();
+    }
+
+    /**
+     * 执行migrate:rollback命令时，会调用该方法
+     */
+    public function down()
+    {
+        if ($this->table('$tableName')->exists()) {
+            $this->table('$tableName')->drop()->save();
+        }
+    }
+}

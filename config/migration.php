@@ -1,13 +1,15 @@
 <?php
 
 return [
+    'migration_base_class' => isadmin\migration\schema\Migration::class,
+    'seed_base_class' => isadmin\migration\schema\Seed::class,
     'adapter_mapping' => [],
     'paths' => [
         'migrations' => [
-            'DbMigrations' => 'database/migrations',
+            'database/migrations',
         ],
         'seeds' => [
-            'DbSeeds' => 'database/seeds',
+            'database/seeds',
         ],
     ],
     'environments' => [
