@@ -19,7 +19,8 @@ return [
     // migration环境配置
     // 该处只定义日志表，环境配置复用thinkphp的数据库配置
     'environments' => [
-        'default_migration_table' => 'migration_log',
+        // 默认migration记录表
+        'default_migration_table' => '_phinxlog',
     ],
     'version_order' => 'creation'
 ];
