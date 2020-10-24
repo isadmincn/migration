@@ -22,5 +22,8 @@ return [
         // 默认migration记录表
         'default_migration_table' => '_phinxlog',
     ],
-    'version_order' => 'creation'
+    'version_order' => 'creation',
+    // 默认使用的数据库连接配置
+    // 具体参看config/database.php的connections配置信息的key
+    'connection' => 'mysql',
 ];

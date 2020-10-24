@@ -27,7 +27,8 @@ trait PhinxConfigBridge
         $config = new Config($migration, $app->getConfigPath() . 'migration.php');
         
         $db           = $app->db;
-        $name         = $db->getConfig('deploy', 'default');
+        $connection = $config['connection'] ?? config('database.default');
+        $name         = $db->getConfig($connection);
 
         $environments = $config['environments'];
         if (!isset($environments['default_database'])) {
