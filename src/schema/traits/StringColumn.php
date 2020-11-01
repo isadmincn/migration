@@ -330,4 +330,33 @@ trait StringColumn
             'limit'   => 15,
         ], $options));
     }
+
+    /**
+     * 添加描述字段
+     *
+     * @param string $column
+     * @param array $options
+     * @return Migration
+     */
+    public function addDescColumn(string $column = 'desc', array $options = []) : Migration
+    {
+        return $this->addStringColumn($column, array_merge([
+            'comment' => '描述',
+        ], $options));
+    }
+
+    /**
+     * UUID
+     *
+     * @param string $column
+     * @param array $options
+     * @return Migration
+     */
+    public function addUuidColumn(string $column = 'uuid', array $options = []) : Migration
+    {
+        return $this->addStringColumn($column, array_merge([
+            'comment' => '唯一id',
+            'default' => Phinx\Util\Literal::from('uuid_generate_v4()'),
+        ], $options));
+    }
 }

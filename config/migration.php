@@ -30,4 +30,11 @@ return [
     'primary_key' => [
         'limit' => Phinx\Db\Adapter\MysqlAdapter::INT_BIG,
     ],
+    // 时间字段配置
+    'datetime' => [
+        'type' => 'datetime',
+        'create_time' => 'created_at',
+        'update_time' => 'updated_at',
+        'delete_time' => 'deleted_at',
+    ],
 ];

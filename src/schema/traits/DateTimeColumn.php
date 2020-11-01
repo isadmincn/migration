@@ -15,14 +15,29 @@ trait DateTimeColumn
      */
     public function addDateTimeColumn(string $column, array $options = []) : Migration
     {
-        $this->table->addColumn($column, 'integer', array_merge([
-            'limit'    => MysqlAdapter::INT_REGULAR,
-            'identity' => false,
-            'null'     => false,
-            'signed'   => false,
-            'comment'  => '时间',
-            'default'  => 0,
-        ], $options));
+        $type = config('migration.datetime.type') ?? 'datetime';
+        switch ($type) {
+            case 'integer':
+            case 'int':
+                $this->table->addColumn($column, 'integer', array_merge([
+                    'limit'    => MysqlAdapter::INT_REGULAR,
+                    'identity' => false,
+                    'null'     => false,
+                    'signed'   => false,
+                    'comment'  => '时间',
+                    'default'  => 0,
+                ], $options));
+                break;
+            case 'datetime':
+            case 'date':
+            case 'timestamp':
+                $this->table->addColumn($column, $type, array_merge([
+                    'null' => false,
+                ]));
+                break;
+            default:
+                throw new \isadmin\base\BaseException('时间字段类型错误', 0);
+        }
 
         return $this;
     }
@@ -34,11 +49,27 @@ trait DateTimeColumn
      * @param array $options
      * @return Migration
      */
-    public function addCreatedAtColumn(string $column = 'created_at', array $options = []) : Migration
+    public function addCreatedAtColumn(string $column = '', array $options = []) : Migration
     {
-        return $this->addDateTimeColumn($column, array_merge([
-            'comment' => '创建时间',
-        ], $options));
+        $type = config('migration.datetime.type') ?? 'datetime';
+        $column = $column ?? (config('migration.datetime.create_time') ?? 'created_at');
+        switch ($type) {
+            case 'integer':
+            case 'int':
+                return $this->addDateTimeColumn($column, array_merge([
+                    'comment' => '创建时间',
+                ], $options));
+                break;
+            case 'datetime':
+            case 'date':
+            case 'timestamp':
+                return $this->addDateTimeColumn($column, array_merge([
+                    'default' => 'CURRENT_TIMESTAMP',
+                    'comment' => '创建时间',
+                ], $options));
+            default:
+                throw new \isadmin\base\BaseException('时间字段类型错误', 0);
+        }
     }
 
     /**
@@ -48,11 +79,28 @@ trait DateTimeColumn
      * @param array $options
      * @return Migration
      */
-    public function addUpdatedAtColumn(string $column = 'updated_at', array $options = []) : Migration
+    public function addUpdatedAtColumn(string $column = '', array $options = []) : Migration
     {
-        return $this->addDateTimeColumn($column, array_merge([
-            'comment' => '更新时间',
-        ], $options));
+        $type = config('migration.datetime.type') ?? 'datetime';
+        $column = $column ?? (config('migration.datetime.update_time') ?? 'updated_at');
+        switch ($type) {
+            case 'integer':
+            case 'int':
+                return $this->addDateTimeColumn($column, array_merge([
+                    'comment' => '更新时间',
+                ], $options));
+                break;
+            case 'datetime':
+            case 'date':
+            case 'timestamp':
+                return $this->addDateTimeColumn($column, array_merge([
+                    'default' => 'CURRENT_TIMESTAMP',
+                    'update'  => 'CURRENT_TIMESTAMP',
+                    'comment' => '创建时间',
+                ], $options));
+            default:
+                throw new \isadmin\base\BaseException('时间字段类型错误', 0);
+        }
     }
 
     /**
@@ -62,10 +110,27 @@ trait DateTimeColumn
      * @param array $options
      * @return Migration
      */
-    public function addDeletedAtColumn(string $column = 'deleted_at', array $options = []) : Migration
+    public function addDeletedAtColumn(string $column = '', array $options = []) : Migration
     {
-        return $this->addDateTimeColumn($column, array_merge([
-            'comment' => '删除时间',
-        ], $options));
+        $type = config('migration.datetime.type') ?? 'datetime';
+        $column = $column ?? (config('migration.datetime.delete_time') ?? 'deleted_at');
+        switch ($type) {
+            case 'integer':
+            case 'int':
+                return $this->addDateTimeColumn($column, array_merge([
+                    'comment' => '删除时间',
+                ], $options));
+                break;
+            case 'datetime':
+            case 'date':
+            case 'timestamp':
+                return $this->addDateTimeColumn($column, array_merge([
+                    'default' => null,
+                    'null'    => true,
+                    'comment' => '删除时间',
+                ], $options));
+            default:
+                throw new \isadmin\base\BaseException('时间字段类型错误', 0);
+        }
     }
 }

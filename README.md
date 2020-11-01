@@ -37,6 +37,17 @@ return [
     // 默认使用的数据库连接配置
     // 具体参看config/database.php的connections配置信息的key
     'connection' => 'mysql',
+    // 默认主键配置
+    'primary_key' => [
+        'limit' => Phinx\Db\Adapter\MysqlAdapter::INT_REGULAR,
+    ],
+    // 时间字段配置
+    'datetime' => [
+        'type' => 'datetime',
+        'create_time' => 'created_at',
+        'update_time' => 'updated_at',
+        'delete_time' => 'deleted_at',
+    ],
 ];
 ```
 其中connection需要设置为具体用于数据迁移的数据库配置的名称

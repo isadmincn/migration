@@ -75,7 +75,7 @@ class Migration extends AbstractMigration
             call_user_func_array([$this->table, $name], $arguments);
             return $this;
         }
-        
+
         throw new \isadmin\base\BaseException('找不到方法', 0);
     }
 }
