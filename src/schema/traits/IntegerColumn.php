@@ -37,6 +37,7 @@ trait IntegerColumn
     public function addPrimaryIdColumn(string $column, array $options = []) : Migration
     {
         return $this->addIntegerColumn($column, array_merge([
+            'limit'    => config('migration.primary_key.limit') ?? MysqlAdapter::INT_REGULAR,
             'default'  => null,
             'signed'   => false,
             'identity' => true,
@@ -53,6 +54,7 @@ trait IntegerColumn
     public function addForeignIdColumn(string $column, array $options = []) : Migration
     {
         return $this->addIntegerColumn($column, array_merge([
+            'limit'    => config('migration.primary_key.limit') ?? MysqlAdapter::INT_REGULAR,
             'comment' => '父id',
             'default' => 0,
         ], $options));
