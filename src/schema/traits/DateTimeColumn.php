@@ -70,7 +70,6 @@ trait DateTimeColumn
             case 'date':
                 return $this->addDateTimeColumn($column, array_merge([
                     'default' => 'CURRENT_DATE',
-                    'update'  => 'CURRENT_DATE',
                     'comment' => '创建时间',
                 ], $options));
             default:
@@ -102,13 +101,13 @@ trait DateTimeColumn
                 return $this->addDateTimeColumn($column, array_merge([
                     'default' => 'CURRENT_TIMESTAMP',
                     'update'  => 'CURRENT_TIMESTAMP',
-                    'comment' => '创建时间',
+                    'comment' => '更新时间',
                 ], $options));
             case 'date':
                 return $this->addDateTimeColumn($column, array_merge([
                     'default' => 'CURRENT_DATE',
                     'update'  => 'CURRENT_DATE',
-                    'comment' => '创建时间',
+                    'comment' => '更新时间',
                 ], $options));
             default:
                 throw new \isadmin\base\BaseException('时间字段类型错误', 0);
