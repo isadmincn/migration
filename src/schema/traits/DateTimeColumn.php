@@ -29,7 +29,6 @@ trait DateTimeColumn
                 ], $options));
                 break;
             case 'datetime':
-            case 'date':
             case 'timestamp':
                 $this->table->addColumn($column, $type, array_merge([
                     'null' => false,
@@ -67,11 +66,6 @@ trait DateTimeColumn
                     'default' => 'CURRENT_TIMESTAMP',
                     'comment' => '创建时间',
                 ], $options));
-            case 'date':
-                return $this->addDateTimeColumn($column, array_merge([
-                    'default' => 'CURRENT_DATE',
-                    'comment' => '创建时间',
-                ], $options));
             default:
                 throw new \isadmin\base\BaseException('时间字段类型错误', 0);
         }
@@ -103,12 +97,6 @@ trait DateTimeColumn
                     'update'  => 'CURRENT_TIMESTAMP',
                     'comment' => '更新时间',
                 ], $options));
-            case 'date':
-                return $this->addDateTimeColumn($column, array_merge([
-                    'default' => 'CURRENT_DATE',
-                    'update'  => 'CURRENT_DATE',
-                    'comment' => '更新时间',
-                ], $options));
             default:
                 throw new \isadmin\base\BaseException('时间字段类型错误', 0);
         }
@@ -135,7 +123,6 @@ trait DateTimeColumn
                 ], $options));
                 break;
             case 'datetime':
-            case 'date':
             case 'timestamp':
                 return $this->addDateTimeColumn($column, array_merge([
                     'default' => null,
