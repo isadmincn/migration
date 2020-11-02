@@ -61,12 +61,16 @@ trait DateTimeColumn
                 return $this->addDateTimeColumn($column, array_merge([
                     'comment' => '创建时间',
                 ], $options));
-                break;
             case 'datetime':
-            case 'date':
             case 'timestamp':
                 return $this->addDateTimeColumn($column, array_merge([
                     'default' => 'CURRENT_TIMESTAMP',
+                    'comment' => '创建时间',
+                ], $options));
+            case 'date':
+                return $this->addDateTimeColumn($column, array_merge([
+                    'default' => 'CURRENT_DATE',
+                    'update'  => 'CURRENT_DATE',
                     'comment' => '创建时间',
                 ], $options));
             default:
@@ -93,13 +97,17 @@ trait DateTimeColumn
                 return $this->addDateTimeColumn($column, array_merge([
                     'comment' => '更新时间',
                 ], $options));
-                break;
             case 'datetime':
-            case 'date':
             case 'timestamp':
                 return $this->addDateTimeColumn($column, array_merge([
                     'default' => 'CURRENT_TIMESTAMP',
                     'update'  => 'CURRENT_TIMESTAMP',
+                    'comment' => '创建时间',
+                ], $options));
+            case 'date':
+                return $this->addDateTimeColumn($column, array_merge([
+                    'default' => 'CURRENT_DATE',
+                    'update'  => 'CURRENT_DATE',
                     'comment' => '创建时间',
                 ], $options));
             default:
