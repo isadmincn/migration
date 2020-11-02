@@ -15,7 +15,7 @@ trait DateTimeColumn
      */
     public function addDateTimeColumn(string $column, array $options = []) : Migration
     {
-        $type = config('migration.datetime.type') ?? 'datetime';
+        $type = config('migration.datetime.type') ?? 'integer';
         switch ($type) {
             case 'integer':
             case 'int':
@@ -51,7 +51,7 @@ trait DateTimeColumn
      */
     public function addCreatedAtColumn(string $column = '', array $options = []) : Migration
     {
-        $type = config('migration.datetime.type') ?? 'datetime';
+        $type = config('migration.datetime.type') ?? 'integer';
         if (empty($column)) {
             $column = config('migration.datetime.create_time') ?? 'create_time';
         }
@@ -86,7 +86,7 @@ trait DateTimeColumn
      */
     public function addUpdatedAtColumn(string $column = '', array $options = []) : Migration
     {
-        $type = config('migration.datetime.type') ?? 'datetime';
+        $type = config('migration.datetime.type') ?? 'integer';
         if (empty($column)) {
             $column = config('migration.datetime.update_time') ?? 'update_time';
         }
@@ -123,7 +123,7 @@ trait DateTimeColumn
      */
     public function addDeletedAtColumn(string $column = '', array $options = []) : Migration
     {
-        $type = config('migration.datetime.type') ?? 'datetime';
+        $type = config('migration.datetime.type') ?? 'integer';
         if (empty($column)) {
             $column = config('migration.datetime.delete_time') ?? 'delete_time';
         }

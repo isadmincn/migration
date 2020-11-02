@@ -32,7 +32,8 @@ return [
     ],
     // 时间字段配置
     'datetime' => [
-        'type' => 'datetime',
+        // type可以选的值有：int/integer, date, datetime, timestamp
+        'type' => 'integer',
         'create_time' => 'created_at',
         'update_time' => 'updated_at',
         'delete_time' => 'deleted_at',
