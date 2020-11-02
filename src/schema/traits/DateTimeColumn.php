@@ -33,7 +33,7 @@ trait DateTimeColumn
             case 'timestamp':
                 $this->table->addColumn($column, $type, array_merge([
                     'null' => false,
-                ]));
+                ], $options));
                 break;
             default:
                 throw new \isadmin\base\BaseException('时间字段类型错误', 0);
