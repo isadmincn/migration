@@ -6,3 +6,4 @@
 /.phinx
 /yarn-error.log
 /.phpunit.result.cache
+/composer.lock

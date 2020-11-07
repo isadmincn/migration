@@ -357,7 +357,6 @@ trait StringColumn
     {
         return $this->addStringColumn($column, array_merge([
             'comment' => '唯一id',
-            'default' => Uuid::uuid4()->toString(),
         ], $options));
     }
 }
