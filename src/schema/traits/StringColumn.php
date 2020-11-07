@@ -2,6 +2,7 @@
 namespace isadmin\migration\schema\traits;
 
 use isadmin\migration\schema\Migration;
+use Ramsey\Uuid\Uuid;
 
 trait StringColumn
 {
@@ -356,7 +357,7 @@ trait StringColumn
     {
         return $this->addStringColumn($column, array_merge([
             'comment' => '唯一id',
-            'default' => Phinx\Util\Literal::from('uuid_generate_v4()'),
+            'default' => Uuid::uuid4()->toString(),
         ], $options));
     }
 }
